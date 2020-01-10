@@ -115,8 +115,8 @@ def calc_grad_z(model, train_loader, save_pth=False, gpu=-1, start=0):
     Arguments:
         model: pytorch model, for which s_test should be calculated
         train_loader: pytorch dataloader, which can load the train data
-        save_pth: Path, path where to save the grad_z files if desired. Omitting
-            this argument will skip saving
+        save_pth: Path, path where to save the grad_z files if desired.
+            Omitting this argument will skip saving
         gpu: int, device id to use for GPU, -1 for CPU (default)
         start: int, index of the first test index to use. default is 0
 
