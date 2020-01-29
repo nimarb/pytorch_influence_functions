@@ -490,7 +490,6 @@ def calc_img_wise(config, model, train_loader, test_loader):
     logging.info("Most helpful img IDs: ")
     logging.info(helpful[:3])
 
-    # infl = [x.cpu().numpy().tolist() for x in influence]
     influences_path = outdir.joinpath(f"influence_results_{test_start_index}_"
                                       f"{test_sample_num}.json")
     save_json(influences, influences_path)
