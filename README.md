@@ -56,7 +56,11 @@ You can either install this package directly through pip:
 pip3 install --user pytorch-influence-functions
 ```
 
-Or you can clone the repo and import it as a package after it's in your `PATH`.
+Or you can clone the repo and 
+
+* import it as a package after it's in your `PATH`.
+* install it using `python setup.py install`
+* install it using `python setup.py develop` (if you want to edit the code)
 
 ## Usage
 
