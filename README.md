@@ -250,6 +250,7 @@ prediction outcome of the processed test samples.
 * [x] add some visualisation of the outcome
 * [ ] add recreation of some graphs of the original paper to verify
   implementation
+* [ ] allow custom save name for the influence json
 
 ### v0.3
 
