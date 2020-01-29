@@ -26,7 +26,7 @@ def s_test(z_test, t_test, model, z_loader, gpu=-1, damp=0.01, scale=25.0,
     Returns:
         h_estimate: list of torch tensors, s_test"""
     v = grad_z(z_test, t_test, model, gpu)
-    h_init_estimates = v.copy()
+    h_estimate = v.copy()
 
     ################################
     # TODO: Dynamically set the recursion depth so that iterations stops
@@ -43,11 +43,11 @@ def s_test(z_test, t_test, model, z_loader, gpu=-1, damp=0.01, scale=25.0,
                 x, t = x.cuda(), t.cuda()
             y = model(x)
             loss = calc_loss(y, t)
-            hv = hvp(loss, list(model.parameters()), h_init_estimates)
+            hv = hvp(loss, list(model.parameters()), h_estimate)
             # Recursively caclulate h_estimate
             h_estimate = [
-                _v + (1 - damp) * h_estimate - _hv / scale
-                for _v, h_estimate, _hv in zip(v, h_init_estimates, hv)]
+                _v + (1 - damp) * _h_e - _hv / scale
+                for _v, _h_e, _hv in zip(v, h_estimate, hv)]
             break
         display_progress("Calc. s_test recursions: ", i, recursion_depth)
     return h_estimate
