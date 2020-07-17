@@ -365,6 +365,11 @@ def get_dataset_sample_ids_per_class(class_id, num_samples, test_loader,
 
     Returns:
         sample_list: list of int, contains indicies of the relevant samples"""
+    #######
+    # NOTE / TODO: here's optimisation potential. We are currently searching
+    # for the x+1th sample and when that's found we cancel the loop. we could
+    # stop after finding the x'th picture (start_index + num_samples)
+    #######
     sample_list = []
     img_count = 0
     for i in range(len(test_loader.dataset)):
@@ -400,6 +405,9 @@ def get_dataset_sample_ids(num_samples, test_loader, num_classes=None,
     sample_list = []
     if not num_classes:
         num_classes = len(np.unique(test_loader.dataset.targets))
+    if start_index > len(test_loader.dataset) / num_classes:
+        logging.warn(f"The variable test_start_index={start_index} is "
+                     f"larger than the number of available samples per class.")
     for i in range(num_classes):
         sample_dict[str(i)] = get_dataset_sample_ids_per_class(
             i, num_samples, test_loader, start_index)
