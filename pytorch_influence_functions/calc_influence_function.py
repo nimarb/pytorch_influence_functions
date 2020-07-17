@@ -502,6 +502,8 @@ def calc_img_wise(config, model, train_loader, test_loader):
                                       f"{test_sample_num}.json")
     save_json(influences, influences_path)
 
+    return influences
+
 
 def calc_all_grad_then_test(config, model, train_loader, test_loader):
     """Calculates the influence function by first calculating
