@@ -458,7 +458,7 @@ def calc_img_wise(config, model, train_loader, test_loader):
 
         start_time = time.time()
         influence, harmful, helpful, _ = calc_influence_single(
-            model, train_loader, test_loader, test_id_num=i, gpu=0,
+            model, train_loader, test_loader, test_id_num=i, gpu=config['gpu'],
             recursion_depth=config['recursion_depth'], r=config['r_averaging'])
         end_time = time.time()
 
