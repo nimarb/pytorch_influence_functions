@@ -6,6 +6,7 @@ build/
 dist/
 bin/
 lib/
+.mypy_cache/*
 lib64
 logfile.log
 pytorch_influence_functions.egg-info/
