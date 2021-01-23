@@ -427,6 +427,7 @@ def calc_img_wise(config, model, train_loader, test_loader):
     test_sample_num = config['test_sample_num']
     test_start_index = config['test_start_index']
     outdir = Path(config['outdir'])
+    outdir.mkdir(exist_ok=True, parents=True)
 
     # If calculating the influence for a subset of the whole dataset,
     # calculate it evenly for the same number of samples from all classes.
@@ -510,6 +511,8 @@ def calc_all_grad_then_test(config, model, train_loader, test_loader):
     all grad_z, all s_test and then loading them to calc the influence"""
 
     outdir = Path(config['outdir'])
+    outdir.mkdir(exist_ok=True, parents=True)
+
     s_test_outdir = outdir.joinpath("s_test/")
     if not s_test_outdir.exists():
         s_test_outdir.mkdir()
